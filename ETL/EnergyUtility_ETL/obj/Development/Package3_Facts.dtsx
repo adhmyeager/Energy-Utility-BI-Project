@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/18/2026 4:58:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADHAM"
+  DTS:CreatorName="ADHAM\Admin"
+  DTS:DTSID="{1465FF5D-3482-467C-96F4-5AD8822FA8E9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package3"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{AA8B1AA7-773D-471C-B9D6-4EB4F66F1AA1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_DataMart_Billing]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C029FD06-A4D4-4ED9-8DC7-02E3E613CC56}"
+      DTS:ObjectName="localhost.EnergyUtility_DataMart_Billing">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_DataMart_Billing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1_OLTP_to_Staging-{C029FD06-A4D4-4ED9-8DC7-02E3E613CC56}localhost.EnergyUtility_DataMart_Billing;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_DataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CFE07508-F1CE-4952-BB56-6FFF3E041AF8}"
+      DTS:ObjectName="localhost.EnergyUtility_DataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_DataWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1_OLTP_to_Staging-{CFE07508-F1CE-4952-BB56-6FFF3E041AF8}localhost.EnergyUtility_DataWarehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_StagingDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4E80D50E-25DD-4C78-A15D-C6175579CB1A}"
+      DTS:ObjectName="localhost.EnergyUtility_StagingDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_StagingDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1_OLTP_to_Staging-{4E80D50E-25DD-4C78-A15D-C6175579CB1A}localhost.EnergyUtility_StagingDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_TransactionDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CCECD21F-5986-43AB-891D-85A2DEE355B1}"
+      DTS:ObjectName="localhost.EnergyUtility_TransactionDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_TransactionDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1_OLTP_to_Staging-{CCECD21F-5986-43AB-891D-85A2DEE355B1}localhost.EnergyUtility_TransactionDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load FactBilling"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{034298DF-6D44-40D1-89C3-16A8651F9520}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load FactBilling"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CFE07508-F1CE-4952-BB56-6FFF3E041AF8}"
+          SQLTask:SqlStatementSource="EXEC usp_Load_FactBilling" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load FactEnergyUsage"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FE06B6CE-6D1B-402C-9F67-C26DF1F51A81}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load FactEnergyUsage"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CFE07508-F1CE-4952-BB56-6FFF3E041AF8}"
+          SQLTask:SqlStatementSource="EXEC usp_Load_FactEnergyUsage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{619E564F-815C-4031-9EF8-C10D4CB9D329}"
+      DTS:From="Package\Load FactEnergyUsage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load FactBilling" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load FactEnergyUsage"
+          TopLeft="241.928571931866,16.205882343557" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load FactBilling"
+          TopLeft="256.928571899935,137.970588145475" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="323.128571931866,57.805882343557">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.9999999680689,80.1647058019176"
+              Start="0,0"
+              End="14.9999999680689,72.6647058019176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.0823529009588"
+                    Point2="0,40.0823529009588"
+                    Point3="4,40.0823529009588" />
+                  <mssgle:LineSegment
+                    End="10.9999999680689,40.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.9999999680689,40.0823529009588"
+                    Point2="14.9999999680689,40.0823529009588"
+                    Point3="14.9999999680689,44.0823529009588" />
+                  <mssgle:LineSegment
+                    End="14.9999999680689,72.6647058019176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

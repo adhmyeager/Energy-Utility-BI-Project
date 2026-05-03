@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/18/2026 4:58:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADHAM"
+  DTS:CreatorName="ADHAM\Admin"
+  DTS:DTSID="{A298FCE5-C213-435C-8725-C1EF5935D466}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package4"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{9DB3F463-FCAA-48DA-BBAC-E46ACF2A9F09}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_DataMart_Billing]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FE7BAA12-ED4B-4A93-8CBF-0DA410115118}"
+      DTS:ObjectName="localhost.EnergyUtility_DataMart_Billing">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_DataMart_Billing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package4-{FE7BAA12-ED4B-4A93-8CBF-0DA410115118}localhost.EnergyUtility_DataMart_Billing;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_DataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{64D7BFFA-4629-47EB-A12C-D0364D80DA48}"
+      DTS:ObjectName="localhost.EnergyUtility_DataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_DataWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package4-{64D7BFFA-4629-47EB-A12C-D0364D80DA48}localhost.EnergyUtility_DataWarehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_StagingDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C8D2254D-BDEF-45AA-B06D-3789FBCC184C}"
+      DTS:ObjectName="localhost.EnergyUtility_StagingDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_StagingDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package4-{C8D2254D-BDEF-45AA-B06D-3789FBCC184C}localhost.EnergyUtility_StagingDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EnergyUtility_TransactionDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{39539561-413B-41DE-B2D5-ADE023318C46}"
+      DTS:ObjectName="localhost.EnergyUtility_TransactionDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EnergyUtility_TransactionDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package4-{39539561-413B-41DE-B2D5-ADE023318C46}localhost.EnergyUtility_TransactionDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Data Mart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{00725752-1C08-478F-B300-D9D5BF51865A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data Mart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FE7BAA12-ED4B-4A93-8CBF-0DA410115118}"
+          SQLTask:SqlStatementSource="EXEC usp_Load_DataMart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load Data Mart"
+          TopLeft="192.642857541235,42.9705882024497" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
