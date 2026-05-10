@@ -106,7 +106,8 @@ Energy-Utility-BI-Project/
 4. Run SQL Agent job
 
 ## 📸 Dashboard Preview
-(images)
+<img width="1817" height="856" alt="dashboard" src="https://github.com/user-attachments/assets/b4627721-33af-40be-99cd-b7b211cb1ced" />
+
 
 ## 📈 Business Value
 - Energy usage insights
